@@ -16,13 +16,12 @@
  * Return: A pointer to the filled memory area @s.                                                                                   
  *                                                                                                                                   
  */                                                                                                                                  
-void *_memset(void *s, int c, size_t n)                                                                                              
-{                                                                                                                                    
-        unsigned int index;                                                                                                          
-        unsigned char *memory = s, value = c;                                                                                        
-                                                                                                                                     
-        for (index = 0; index < n; index++)                                                                                          
-                memory[index] = value;                                                                                               
-                                                                                                                                     
-        return (memory);                                                                                                             
+void *_memset(void *s, int c, size_t n)
+{
+	unsigned int i;
+
+	for (i = 0; i < n; i++, s++)
+		*s = b;
+	s = s - n;
+	return (s);
 }
