@@ -1,39 +1,35 @@
-#include "main.h"                                                                                                                  
-                                                                                                                                   
-/**                                                                                                                                
- * _strstr - Locates a substring.                                                                                                  
- * @haystack: The string to be searched.                                                                                           
- * @needle: The substring to be located.                                                                                           
- *                                                                                                                                 
- * Return: If the substring is located - a pointer to the beginning                                                                
- *                                       of the located substring.                                                                 
- *         If the substring is not located - NULL.                                                                                 
- */                                                                                                                                
-                                                                                                                               	
-char *_strstr(char *haystack, char *needle)                                                                                        
-{                                                                                                                                  
-        int index;                                                                                                                 
-                                                                                                                                   
-        if (*needle == 0)                                                                                                          
-                return (haystack);                                                                                                 
-                                                                                                                                   
-        while (*haystack)                                                                                                          
-        {                                                                                                                          
-                index = 0;                                                                                                         
-                                                                                                                                   
-                if (haystack[index] == needle[index])                                                                              
-                {                                                                                                                  
-                        do {                                                                                                       
-                                if (needle[index + 1] == '\0')                                                                     
-                                        return (haystack);                                                                         
-                                                                                                                                   
-                                index++;                                                                                           
-                                                                                                                                   
-                        } while (haystack[index] == needle[index]);                                                                
-                }                                                                                                                  
-                                                                                                                                   
-                haystack++;                                                                                                        
-        }                                                                                                                          
-                                                                                                                                   
-        return ('\0');                                                                                                             
+#include "main.h"
+
+/**
+ * _strstr - finds the first occurrence of the substring needle
+ *  in the string haystack
+ *
+ * @haystack: string to work on
+ * @needle: substring to match
+ * Return: pointer to the first match or NULL
+ */
+char *_strstr(char *haystack, char *needle)
+{
+	int i, j, match;
+
+	if (*needle == '\0')
+		return (haystack);
+	for (i = 0; haystack[i] != '\0'; i++)
+	{
+		if (haystack[i] == *needle)
+		{
+			for (j = 1; needle[j] != '\0'; j++)
+			{
+				if (needle[j] != haystack[i + j])
+				{
+					match = 0;
+					break;
+				}
+				match = 1;
+			}
+			if (match)
+				return (haystack + i);
+		}
+	}
+	return (NULL);
 }
