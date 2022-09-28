@@ -1,29 +1,31 @@
-#include "main.h"                                                                                                                  
-#include <stdio.h>                                                                                                                 
-                                                                                                                                   
-/**                                                                                                                                
- * print_diagsums - Prints the sum of the two diagonals                                                                            
- *                  of a square matrix of integers.                                                                                
- * @a: The matrix of integers.                                                                                                     
- * @size: The size of the matrix.                                                                                                  
+#include "main.h"
+#include <stdio.h>
+
+/**
+ * print_diagsums - prints the sum of the two diagonals of
+ * a square matrix of integers
+ *
+ * @a: 2-dimensional array
+ * @size: size of the matrix
+ * Return: void
  */
-void print_diagsums(int *a, int size)                                                                                              
-{                                                                                                                                  
-        int index, sum1 = 0, sum2 = 0;                                                                                             
-                                                                                                                                   
-        for (index = 0; index < size; index++)                                                                                     
-        {                                                                                                                          
-                sum1 += a[index];                                                                                                  
-                a += size;                                                                                                         
-        }                                                                                                                          
-                                                                                                                                   
-        a -= size;                                                                                                                 
-                                                                                                                                   
-        for (index = 0; index < size; index++)                                                                                     
-        {                                                                                                                          
-                sum2 += a[index];                                                                                                  
-                a -= size;                                                                                                         
-        }                                                                                                                          
-                                                                                                                                   
-        printf("%d, %d\n", sum1, sum2);                                                                                            
+void print_diagsums(int *a, int size)
+{
+	int i = 0, len, diag_sum = 0;
+
+	len = size * size;
+	while (i < len)
+	{
+		diag_sum += a[i];
+		i += size + 1;
+	}
+	printf("%d, ", diag_sum);
+	i = size - 1;
+	diag_sum = 0;
+	while (i < len - size + 1)
+	{
+		diag_sum += a[i];
+		i += size - 1;
+	}
+	printf("%d\n", diag_sum);
 }
